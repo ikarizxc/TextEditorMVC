@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons\copy.png" />
+    <None Remove="icons\create.png" />
+    <None Remove="icons\cut.png" />
+    <None Remove="icons\help.png" />
+    <None Remove="icons\info.png" />
+    <None Remove="icons\insert.png" />
+    <None Remove="icons\left.png" />
+    <None Remove="icons\open.png" />
+    <None Remove="icons\right.png" />
+    <None Remove="icons\save.png" />
+    <None Remove="icons\start.png" />
+    <None Remove="icons\text_editor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\copy.png" />
+    <Resource Include="icons\create.png" />
+    <Resource Include="icons\cut.png" />
+    <Resource Include="icons\help.png" />
+    <Resource Include="icons\info.png" />
+    <Resource Include="icons\insert.png" />
+    <Resource Include="icons\left.png" />
+    <Resource Include="icons\open.png" />
+    <Resource Include="icons\right.png" />
+    <Resource Include="icons\save.png" />
+    <Resource Include="icons\start.png" />
+    <Resource Include="icons\text_editor.png" />
+  </ItemGroup>
+
+</Project>

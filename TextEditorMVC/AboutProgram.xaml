@@ -1,0 +1,19 @@
+﻿<Window x:Class="TextEditorMVC.AboutProgram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextEditorMVC"
+        mc:Ignorable="d"
+        Title="О программе" MinHeight="300" MinWidth="600" MaxHeight="300" MaxWidth="600"
+        Icon="/icons/info.png">
+    <Grid>
+
+        <TextBlock TextWrapping="Wrap" Width="530" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,57,0,0">
+            Программа "Текстовый редактор" разработана в рамках выполнения работы по теме "Разработка пользовательского интерфейса (GUI) для языкового процессора".
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" Width="530" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Height="90" Margin="0,134,0,0">
+            Цель работы заключается в создании функционального приложения, предназначенного для редактирования текстов и обработки их языковым процессором.
+        </TextBlock>
+    </Grid>
+</Window>
