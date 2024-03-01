@@ -18,9 +18,9 @@
 
 const PI:f32 = 3.14;
 
-const myConst: f32 = +3.14;
+const myConst: f32 = 3.14;
 
-const dsadwq:f32 = -0.14;const PI:f32 = 3.14;
+const dsadwq:f32 = 0.14;const PI:f32 = 3.14;
 
 
 
