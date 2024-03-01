@@ -38,15 +38,15 @@ namespace TextEditorMVC
     {
         public static List<TokenType> list = new List<TokenType>()
         {
-            { new TokenType("CONST", 0, "const") },
-            { new TokenType("FLOAT32", 1, "f32") },
-            { new TokenType("IDENTIFICATOR", 2, "[a-zA-Z][a-zA-Z]*") },
-            { new TokenType("NUMBER", 3, "[+-]?\\d*\\.?\\d+") },
-            { new TokenType("COLON", 4, ":") },
-            { new TokenType("ASSIGN OPERATOR", 5, "=") },
-            { new TokenType("SPACE", 6, "[ \\t]") },
-            { new TokenType("END OF OPERATOR", 7, "[;]") },
-            { new TokenType("NEW LINE", 8, "[\\r]\\n") },
+            { new TokenType("CONST", 1, "const") },
+            { new TokenType("FLOAT32", 2, "f32") },
+            { new TokenType("IDENTIFICATOR", 3, "[a-zA-Z][a-zA-Z]*") },
+            { new TokenType("NUMBER", 4, "[+-]?\\d*\\.?\\d+") },
+            { new TokenType("COLON", 5, ":") },
+            { new TokenType("ASSIGN OPERATOR", 6, "=") },
+            { new TokenType("SPACE", 7, "[ \\t]") },
+            { new TokenType("END OF OPERATOR", 8, "[;]") },
+            { new TokenType("NEW LINE", 9, "[\\r]\\n") },
         };  
     }
 }
