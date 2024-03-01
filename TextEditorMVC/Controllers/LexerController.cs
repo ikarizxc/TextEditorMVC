@@ -36,7 +36,8 @@ namespace TextEditorMVC
                     OutputToken item = new OutputToken()
                     {
                         Line = pos.Item2,
-                        Symbol = pos.Item1,
+                        StartSymbol = pos.Item1,
+                        EndSymbol = pos.Item1 + token.Length - 1,
                         Code = token.TokenType.Code,
                         TokenType = token.TokenType.Name,
                         Token = token.Text,
@@ -52,18 +53,25 @@ namespace TextEditorMVC
 
         public ObservableCollection<OutputError> GetErrors()
         {
-            if (lexer.Error != null)
+            if (lexer.ErrorList.Count > 0)
             {
-                Tuple<int, int> pos = TextProcessor.GetPosition(lexer.Code, lexer.Error.Position);
+                ObservableCollection<OutputError> lexemes = new ObservableCollection<OutputError>();
 
-                OutputError outputError = new OutputError()
+                foreach (Error error in lexer.ErrorList)
                 {
-                    Line = pos.Item2,
-                    Symbol = pos.Item1,
-                    Message = lexer.Error.Message
-                };
+                    Tuple<int, int> pos = TextProcessor.GetPosition(lexer.Code, error.Position);
 
-                return new ObservableCollection<OutputError>() { outputError };
+                    OutputError item = new OutputError()
+                    {
+                        Line = pos.Item2,
+                        Symbol = pos.Item1,
+                        Message = error.Message,
+                    };
+
+                    lexemes.Add(item);
+                }
+
+                return lexemes;
             }
             return new ObservableCollection<OutputError>();
         }

@@ -11,6 +11,7 @@ namespace TextEditorMVC
         TokenType type;
         string text;
         int position;
+        int length;
 
         public int Position
         { 
@@ -24,12 +25,17 @@ namespace TextEditorMVC
         {
             get { return text; }
         }
+        public int Length
+        {
+            get { return length; }
+        }
 
-        public Token(TokenType type, string text, int position)
+        public Token(TokenType type, string text, int position, int length)
         {
             this.type = type;
             this.text = text;
             this.position = position;
+            this.length = length;
         }
     }
 }

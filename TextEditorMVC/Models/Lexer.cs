@@ -15,17 +15,17 @@ namespace TextEditorMVC
         string code = String.Empty;
         int position = 0;
         List<Token> tokenList = new List<Token>();
-        Error? error;
+        List<Error> errorList = new List<Error>();
 
         public string Code { get { return code; } }
         public List<Token> TokenList { get { return tokenList; } }
-        public Error? Error { get { return error; } }
+        public List<Error> ErrorList { get { return errorList; } }
 
         private void ResetAll()
         {
             this.position = 0;
             tokenList = new List<Token>();
-            error = null;
+            errorList = new List<Error>();
         }
 
         public bool LexicalAnalysis(string code)
@@ -38,7 +38,7 @@ namespace TextEditorMVC
 
             }
             
-            if (error == null)
+            if (errorList.Count == 0)
             {
                 return true;
             }
@@ -69,14 +69,15 @@ namespace TextEditorMVC
                         tokenText = "\\n";
                     }
 
-                    var token = new Token(tokenType, tokenText, this.position);
+                    var token = new Token(tokenType, tokenText, this.position, tokenText.Length);
                     this.position += tokenText.Length;
                     this.tokenList.Add(token);
                     return true;
                 }
             }
-            error = new(this.position, $"На позиции {this.position} обнаружена ошибка");
-            return false;
+            errorList.Add(new(this.position, $"На позиции {this.position} обнаружена ошибка"));
+            this.position += 1;
+            return true;
         }
     }
 }
