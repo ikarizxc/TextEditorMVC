@@ -10,7 +10,7 @@
 
 Диаграмма состояний сканера:
 
-![scanner](https://github.com/ikarizxc/TextEditorMVC/assets/114616603/39a5347c-ac9c-4c60-bc0e-a741fd2dc50c)
+![scanner](https://github.com/ikarizxc/TextEditorMVC/assets/114616603/48cfe627-490c-48cf-953c-dfd0c3afd7e5)
 
 
 
