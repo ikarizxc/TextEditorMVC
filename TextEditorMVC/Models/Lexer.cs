@@ -14,18 +14,18 @@ namespace TextEditorMVC
     {
         string code = String.Empty;
         int position = 0;
-        List<Token> tokenList = new List<Token>();
-        List<Error> errorList = new List<Error>();
+        List<Token> tokens = new List<Token>();
+        List<Error> errors = new List<Error>();
 
         public string Code { get { return code; } }
-        public List<Token> TokenList { get { return tokenList; } }
-        public List<Error> ErrorList { get { return errorList; } }
+        public List<Token> Tokens { get { return tokens; } }
+        public List<Error> Errors { get { return errors; } }
 
         private void ResetAll()
         {
             this.position = 0;
-            tokenList = new List<Token>();
-            errorList = new List<Error>();
+            tokens = new List<Token>();
+            errors = new List<Error>();
         }
 
         public bool LexicalAnalysis(string code)
@@ -38,7 +38,7 @@ namespace TextEditorMVC
 
             }
             
-            if (errorList.Count == 0)
+            if (errors.Count == 0)
             {
                 return true;
             }
@@ -55,7 +55,7 @@ namespace TextEditorMVC
                 return false;
             }
 
-            for (int i = 0; i < TokenTypeList.list.Count; i++)
+            for (int i = 1; i < TokenTypeList.list.Count; i++)
             {
                 var tokenType = TokenTypeList.list[i];
                 var regex = new Regex("^" + tokenType.Regex);
@@ -71,11 +71,11 @@ namespace TextEditorMVC
 
                     var token = new Token(tokenType, tokenText, this.position, tokenText.Length);
                     this.position += tokenText.Length;
-                    this.tokenList.Add(token);
+                    this.tokens.Add(token);
                     return true;
                 }
             }
-            errorList.Add(new(this.position, $"На позиции {this.position} обнаружена ошибка"));
+            errors.Add(new(this.position, $"На позиции {this.position + 1} обнаружена ошибка"));
             this.position += 1;
             return true;
         }

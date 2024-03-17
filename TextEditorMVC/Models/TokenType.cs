@@ -38,15 +38,16 @@ namespace TextEditorMVC
     {
         public static List<TokenType> list = new List<TokenType>()
         {
-            { new TokenType("CONST", 1, "const") },
-            { new TokenType("FLOAT32", 2, "f32") },
-            { new TokenType("IDENTIFICATOR", 3, "[a-zA-Z][a-zA-Z]*") },
-            { new TokenType("NUMBER", 4, "[+-]?\\d*\\.?\\d+") },
-            { new TokenType("COLON", 5, ":") },
-            { new TokenType("ASSIGN OPERATOR", 6, "=") },
-            { new TokenType("SPACE", 7, "[ \\t]") },
-            { new TokenType("END OF OPERATOR", 8, "[;]") },
-            { new TokenType("NEW LINE", 9, "[\\r]\\n") },
+            { new TokenType("DEF", 0, "") },
+            { new TokenType("ключевое слово - 'const'", 1, "const") },
+            { new TokenType("ключевое слово - 'f32'", 2, "f32") },
+            { new TokenType("идентификатор", 3, "[a-zA-Z_][a-zA-Z0-9_]*") },
+            { new TokenType("вещественное число", 4, "[+-]?\\d*\\.?\\d+") },
+            { new TokenType("оператор принадлежности к типу - ':'", 5, ":") },
+            { new TokenType("оператор присваивания - '='", 6, "=") },
+            { new TokenType("пробел", 7, "[ \\t]") },
+            { new TokenType("конец оператора - ';'", 8, "[;]") },
+            { new TokenType("перенос на новую строку", 9, "[\\r]\\n") },
         };  
     }
 }

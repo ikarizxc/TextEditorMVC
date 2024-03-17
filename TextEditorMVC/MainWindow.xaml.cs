@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TextEditorMVC.Models;
 
 namespace TextEditorMVC
 {
@@ -18,7 +19,7 @@ namespace TextEditorMVC
 	public partial class MainWindow : Window
 	{
 		FilesController filesController = new FilesController();
-		LexerController lexerController = new LexerController();
+		LanguageController languageController = new LanguageController();
 
 		public MainWindow()
 		{
@@ -365,17 +366,17 @@ namespace TextEditorMVC
             DataGridOutput.ItemsSource = null;
             DataGridErrors.ItemsSource = null;
 
-            if (lexerController.LexicalAnalysis(filesController.OpenedFile.Content))
+            if (languageController.Analyze(filesController.OpenedFile.Content))
 			{
 				TabControlOutput.SelectedIndex = 1;
 
-				DataGridOutput.ItemsSource = lexerController.GetLexemes();
+				DataGridOutput.ItemsSource = languageController.GetLexemes();
             }
 			else
 			{
                 TabControlOutput.SelectedIndex = 0;
 
-				DataGridErrors.ItemsSource = lexerController.GetErrors();
+				DataGridErrors.ItemsSource = languageController.GetErrors();
             }
         }
     }

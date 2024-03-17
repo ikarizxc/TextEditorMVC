@@ -6,36 +6,37 @@ using System.Threading.Tasks;
 
 namespace TextEditorMVC
 {
-    internal class Token
-    {
-        TokenType type;
-        string text;
-        int position;
-        int length;
+	internal class Token
+	{
+		TokenType type;
+		string text;
+		int position;
+		int length;
 
-        public int Position
-        { 
-            get { return position; }
-        }
-        public TokenType TokenType 
-        { 
-            get { return type; } 
-        }
-        public string Text
-        {
-            get { return text; }
-        }
-        public int Length
-        {
-            get { return length; }
-        }
+		public int Position
+		{
+			get { return position; }
+		}
+		public TokenType TokenType
+		{
+			set { type = value; }
+			get { return type; }
+		}
+		public string Text
+		{
+			get { return text; }
+		}
+		public int Length
+		{
+			get { return length; }
+		}
 
-        public Token(TokenType type, string text, int position, int length)
-        {
-            this.type = type;
-            this.text = text;
-            this.position = position;
-            this.length = length;
-        }
-    }
+		public Token(TokenType type, string text, int position, int length)
+		{
+			this.type = type;
+			this.text = text;
+			this.position = position;
+			this.length = length;
+		}
+	}
 }

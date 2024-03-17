@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextEditorMVC
 {
-    internal class OutputError
+    internal class ErrorViewModel
     {
         public int Line { get; set; }
         public int Symbol { get; set; }

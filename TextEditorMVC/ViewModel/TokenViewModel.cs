@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TextEditorMVC
 {
-    internal class OutputToken
+    internal class TokenViewModel
     {
         public int Line { get; set; }
         public int StartSymbol { get; set; }
