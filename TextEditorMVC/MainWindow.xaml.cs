@@ -371,6 +371,12 @@ namespace TextEditorMVC
 				TabControlOutput.SelectedIndex = 1;
 
 				DataGridOutput.ItemsSource = languageController.GetLexemes();
+
+				if (languageController.Code != filesController.OpenedFile.Content)
+				{
+					TabItem currentItem = (TabItem)TabControlFiles.Items[TabControlFiles.SelectedIndex];
+					((TextBox)currentItem.Content).Text = languageController.Code;
+				}
             }
 			else
 			{

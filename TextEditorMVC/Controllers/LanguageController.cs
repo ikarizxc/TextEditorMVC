@@ -14,9 +14,16 @@ namespace TextEditorMVC
     {
         Lexer lexer = new Lexer();
         Parser parser;
+        ErrorNeutralizer errorNeutralizer;
+
+        string code;
+
+        public string Code { get { return code; } } 
 
         public bool Analyze(string code)
         {
+            this.code = code;
+
             if (code != null)
             {
                 if (lexer.LexicalAnalysis(code))
@@ -28,8 +35,22 @@ namespace TextEditorMVC
                         return true;
                     }
                     else
-                    { 
-                        return false; 
+                    {
+						errorNeutralizer = new ErrorNeutralizer(lexer.Tokens);
+                        parser = new Parser(errorNeutralizer.NeutralizingErrors());
+
+						if (parser.Parse())
+						{
+                            this.code = TextProcessor.CreateTextFromTokens(lexer.Tokens);
+
+                            lexer.LexicalAnalysis(this.code);
+
+							return true;
+						}
+						else
+						{
+							return false;
+						}
                     }
                 }
                 else

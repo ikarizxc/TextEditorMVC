@@ -30,5 +30,24 @@ namespace TextEditorMVC
 
             return new Tuple<int, int>(charPosition, lineNumber);
         }
-    }
+
+		public static string CreateTextFromTokens(List<Token> tokens)
+		{
+			string result = String.Empty;
+
+			foreach (Token info in tokens)
+			{
+				if (info.Text == "\\n")
+				{
+					result += '\n';
+				}
+				else
+				{
+					result += info.Text;
+				}
+			}
+
+			return result;
+		}
+	}
 }
