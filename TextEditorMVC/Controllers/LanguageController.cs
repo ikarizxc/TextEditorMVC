@@ -16,6 +16,8 @@ namespace TextEditorMVC
         Parser parser;
         ErrorNeutralizer errorNeutralizer;
 
+        List<Error> errors;
+
         string code;
 
         public string Code { get { return code; } } 
@@ -37,7 +39,9 @@ namespace TextEditorMVC
                     else
                     {
 						errorNeutralizer = new ErrorNeutralizer(lexer.Tokens);
-                        parser = new Parser(errorNeutralizer.NeutralizingErrors());
+						errors = parser.Errors;
+
+						parser = new Parser(errorNeutralizer.NeutralizingErrors());
 
 						if (parser.Parse())
 						{
@@ -55,7 +59,8 @@ namespace TextEditorMVC
                 }
                 else
                 {
-                    return false;
+					errors = lexer.Errors;
+					return false;
                 }
 			}
 			return false;
@@ -91,11 +96,11 @@ namespace TextEditorMVC
 
         public ObservableCollection<ErrorViewModel> GetErrors()
         {
-			ObservableCollection<ErrorViewModel> errors = new ObservableCollection<ErrorViewModel>();
+			if (errors.Count > 0)
+            {
+				ObservableCollection<ErrorViewModel> errorsVM = new ObservableCollection<ErrorViewModel>();
 
-			if (lexer.Errors.Count > 0)
-            { 
-                foreach (Error error in lexer.Errors)
+				foreach (Error error in errors)
                 {
                     Tuple<int, int> pos = TextProcessor.GetPosition(lexer.Code, error.Position);
 
@@ -106,31 +111,12 @@ namespace TextEditorMVC
                         Message = error.Message,
                     };
 
-					errors.Add(item);
+					errorsVM.Add(item);
 				}
-            }
 
-            if (parser != null && parser.Errors.Count > 0)
-            {
-				foreach (Error error in parser.Errors)
-				{
-					Tuple<int, int> pos = TextProcessor.GetPosition(lexer.Code, error.Position);
-
-					ErrorViewModel item = new ErrorViewModel()
-					{
-						Line = pos.Item2,
-						Symbol = pos.Item1,
-						Message = error.Message,
-					};
-
-					errors.Add(item);
-				}
+				return errorsVM;
 			}
 				
-            if (errors.Count > 0)
-            {
-                return errors;
-            }
             return new ObservableCollection<ErrorViewModel>();
         }
     }
